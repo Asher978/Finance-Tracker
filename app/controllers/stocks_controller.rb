@@ -8,12 +8,18 @@ class StocksController < ApplicationController
                     format.js { render partial: "users/result" }
                 end
             else
-                flash[:danger] = "You have entered an incorrect symbol!"
-                redirect_to my_portfolio_path    
+                respond_to do |format|
+                    flash.now[:danger] = "You have entered an incorrect symbol!"
+                    format.js { render partial: "users/result" }
+                end
+                
             end
         else
-            flash[:danger] = "You must provide a stock symbol!"
-            redirect_to my_portfolio_path
+            respond_to do |format|
+                flash.now[:danger] = "You must provide a stock symbol!"
+                format.js { render partial: "users/result" }
+            end
         end
     end
+    
 end
