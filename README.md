@@ -1,3 +1,9 @@
 # Finance Stock Tracker
 
-    * database = postgresql
+### Database
+
+    * postgresql
+
+### Authentication
+
+    * devise
