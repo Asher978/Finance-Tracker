@@ -6,7 +6,7 @@
 
 ### ERDs
 
-    ## _Stock_
+_Stock_
 
 | Column     | Type                 | Default | Nullable |
 | ---------- | -------------------- | ------- | -------- |
