@@ -9,6 +9,12 @@ gem 'rails', '~> 5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
 # devise
 gem 'devise'
+# devise bootstrap view
+gem 'devise-bootstrap-views'
+# twitter bootstrap for rails
+gem 'twitter-bootstrap-rails'
+# jquery-rails
+gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
