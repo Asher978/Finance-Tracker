@@ -1,7 +1,8 @@
 import fetch from "isomorphic-fetch";
+import cookie from "js-cookie";
 
 // TODO Move me elsewhere!
-const host = window.location.protocol + "//" + window.location.host;
+const host = window.location.protocol + "//localhost:3000";
 
 export default class clientAPI {
   constructor() {
@@ -23,16 +24,14 @@ export default class clientAPI {
 
     return fetch(fullUrl, {
       method: "GET",
-      headers: this.headers,
-      credentials: "include"
+      headers: Object.assign(this.headers, getCookie())
     });
   }
 
   post(url, params) {
     return fetch(host + url, {
       method: "POST",
-      headers: this.headers,
-      credentials: "include",
+      headers: Object.assign(this.headers, getCookie()),
       body: JSON.stringify(params.data)
     });
   }
@@ -40,9 +39,16 @@ export default class clientAPI {
   put(url, params) {
     return fetch(host + url, {
       method: "PUT",
-      headers: this.headers,
-      credentials: "include",
+      headers: Object.assign(this.headers, getCookie()),
       body: JSON.stringify(params.data)
     });
   }
+}
+
+/**
+ * helper func to get and parse the cookie
+ * since it was stringified before setting it
+ */
+function getCookie() {
+  return cookie.getJSON("token");
 }
