@@ -1,9 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { Router, Switch, Route } from "react-router";
+import { Router } from "react-router";
+import { renderRoutes } from "react-router-config";
+import cookie from "js-cookie";
+import routes from "./routes";
 
-import Home from "~/components/Home";
+import "bootstrap/scss/bootstrap.scss";
 
 /**
  * Redux Store Setup
@@ -11,14 +14,16 @@ import Home from "~/components/Home";
 import ApiClient from "~/helpers/ApiClient";
 import configureStore from "~/redux/create";
 const apiClient = new ApiClient();
+import { load } from "~/redux/modules/auth";
 
 // set initial app state
-const initialState = {};
+const initialState = {
+  auth: {
+    isAuthenticated: cookie.get("token") ? true : false
+  }
+};
 
 const store = configureStore(initialState, apiClient);
-
-// app core styles
-// import "Styles/black-core.scss";
 
 // histroy object
 import { createBrowserHistory } from "history";
@@ -26,21 +31,18 @@ const history = createBrowserHistory();
 
 async function renderApp() {
   /**
-   * if token is present in the cookies then we have a logged in user
-   * load the user before rendering the app again. This allows to persist user
-   * throw out the app especially on browser refresh
+   * if cookie is present then we have a logged in user
+   * load the user before rendering the app again.
+   * This allows to mount the user in the state of the app
    */
-  //   if (token) {
-  //     await store.dispatch(loadUser());
-  //   }
+  const { isAuthenticated } = store.getState().auth;
+  if (isAuthenticated) {
+    await store.dispatch(load());
+  }
 
   render(
     <Provider store={store}>
-      <Router history={history}>
-        <Switch>
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
+      <Router history={history}>{renderRoutes(routes)}</Router>
     </Provider>,
     document.querySelector("#react__root")
   );
