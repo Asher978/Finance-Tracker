@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current",
+          "browsers": ["last 2 versions", "IE >= 8"]
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "babel-plugin-root-import",
+      {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      }
+    ],
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-object-rest-spread",
+    "transform-class-properties",
+    "transform-async-to-promises"
+  ]
+}
