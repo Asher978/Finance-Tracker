@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount_devise_token_auth_for 'User', at: 'auth'
 
-  root 'welcome#index'
-  get 'my_portfolio', to: 'users#my_portfolio'
-  get 'search_stocks', to: 'stocks#search'
-
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :stocks
+    end
+  end
 end
