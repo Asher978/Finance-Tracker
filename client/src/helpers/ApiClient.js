@@ -43,6 +43,13 @@ export default class clientAPI {
       body: JSON.stringify(params.data)
     });
   }
+
+  delete(url) {
+    return fetch(host + url, {
+      method: "DELETE",
+      headers: Object.assign(this.headers, getCookie())
+    });
+  }
 }
 
 /**
