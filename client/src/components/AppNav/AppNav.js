@@ -1,5 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logOut as logoutAction } from "~/redux/modules/auth";
 
 import {
   Collapse,
@@ -11,13 +14,23 @@ import {
 } from "reactstrap";
 import "./AppNav.scss";
 
+@connect(
+  state => ({ isAuthenticated: state.auth.isAuthenticated }),
+  { logout: logoutAction }
+)
 class AppNav extends React.Component {
+  static propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired
+  };
+
   state = {
     collapseOpen: false,
     color: "navbar-transparent"
   };
+
   render() {
-    const { isAuthenticated, handleSignout } = this.props;
+    const { isAuthenticated, logout } = this.props;
     return (
       <Navbar className="navbar-absolute fixed-top" expand="lg">
         <Container>
@@ -48,7 +61,7 @@ class AppNav extends React.Component {
                     </NavLink>
                   </NavItem>
                   <NavItem style={{ cursor: "pointer" }}>
-                    <Link className="nav-link" onClick={handleSignout}>
+                    <Link className="nav-link" onClick={logout}>
                       <i className="fas fa-sign-out-alt" /> Log out
                     </Link>
                   </NavItem>
