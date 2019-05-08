@@ -5,12 +5,15 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { renderRoutes } from "react-router-config";
 import qs from "qs";
-
+// components
+import AppNav from "~/components/AppNav/AppNav";
+// styling
 import "./App.scss";
 
-import AppNav from "~/components/AppNav/AppNav";
-
-@connect(state => ({ user: state.auth.user }))
+@connect(state => ({
+  user: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated
+}))
 @withRouter
 class App extends React.Component {
   static propTypes = {
