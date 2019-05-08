@@ -30,3 +30,4 @@
 # client side
 client/node_modules
 tsconfig.json
+settings.json
