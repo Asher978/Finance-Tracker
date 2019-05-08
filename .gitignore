@@ -29,3 +29,4 @@
 
 # client side
 client/node_modules
+tsconfig.json
