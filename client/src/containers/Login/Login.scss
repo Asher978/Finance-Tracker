@@ -1,0 +1,103 @@
+.login__form,
+.register__form {
+  .card {
+    background: #fff;
+    border: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.4285rem;
+    padding-bottom: 0.7rem;
+  }
+  .card-header {
+    padding: 0 0 100px;
+    overflow: hidden;
+    border: 0;
+    color: hsla(0, 0%, 100%, 0.8);
+    background-color: initial;
+
+    img {
+      position: absolute;
+      max-width: 100%;
+      border-radius: 0.2857rem;
+    }
+    .card-title {
+      position: relative;
+      font-size: 5em;
+      font-weight: 900;
+      color: #fff;
+      text-transform: lowercase;
+      margin-left: -5px;
+      z-index: 1;
+    }
+  }
+  .card-body {
+    padding: 15px;
+  }
+  .card-footer {
+    background-color: initial;
+    border: 0;
+    padding: 15px;
+
+    &:last-child {
+      border-radius: 0 0 0.2232rem 0.2232rem;
+    }
+
+    .btn {
+      background-color: transparent;
+      color: #344675;
+      border-color: #344675;
+
+      &:hover {
+        background-color: #32dbc6;
+        border-color: transparent;
+        color: #fff;
+      }
+    }
+  }
+
+  .input-group {
+    margin-bottom: 10px;
+  }
+  .input-group > .custom-select:not(:first-child),
+  .input-group > .form-control:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .input-group-prepend {
+    display: flex;
+    margin-right: 0;
+  }
+  .input-group-text {
+    background-color: initial;
+    border: 1px solid rgba(29, 37, 59, 0.2);
+    border-right: none;
+    padding: 10px 0 10px 18px;
+    border-radius: 0.4285rem;
+    color: #1d253b;
+    margin: 0;
+
+    i {
+      opacity: 0.5;
+      width: 17px;
+    }
+  }
+
+  .form-control {
+    position: relative;
+    padding: 10px 18px;
+    flex: 1 1 auto;
+    width: 1%;
+    border-radius: 0.4285rem;
+    margin-bottom: 0;
+    color: #222a42;
+    border: 1px solid rgba(29, 37, 59, 0.2);
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
+
+    &:last-child {
+      border-left: 0;
+    }
+  }
+}

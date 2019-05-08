@@ -1,0 +1,40 @@
+@import "../../assets/scss/core.scss";
+
+body {
+  background: #f5f6fa;
+}
+
+main.app {
+  position: relative;
+  top: 0;
+  min-height: 100vh;
+  height: auto;
+  overflow: hidden;
+  cursor: default;
+
+  .full__page {
+    background: -webkit-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(72, 215, 244, 0.25) 100%
+    );
+    min-height: 100vh;
+  }
+
+  .content {
+    position: relative;
+    padding-bottom: 150px;
+    padding-top: 150px;
+  }
+}
+
+main.app__home,
+main.app__login {
+  background-image: url("./bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+main.app__login {
+  background-image: url("./bg-login.jpg");
+}

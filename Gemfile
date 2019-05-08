@@ -7,14 +7,12 @@ ruby '2.4.1'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# devise
-gem 'devise'
-# devise bootstrap view
-gem 'devise-bootstrap-views'
-# twitter bootstrap for rails
-gem 'twitter-bootstrap-rails'
-# jquery-rails
-gem 'jquery-rails'
+# devise token based auth
+gem 'devise_token_auth'
+# omini auth (dpendency for devise_token_auth)
+gem 'omniauth'
+# cors
+gem 'rack-cors', :require=> 'rack/cors'
 # stock quote
 gem 'stock_quote'
 # Use Puma as the app server

@@ -25,3 +25,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+
+# client side
+client/node_modules
+tsconfig.json
+settings.json
