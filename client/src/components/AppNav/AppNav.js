@@ -17,7 +17,7 @@ class AppNav extends React.Component {
     color: "navbar-transparent"
   };
   render() {
-    const { authenticated } = this.props;
+    const { isAuthenticated, handleSignout } = this.props;
     return (
       <Navbar className="navbar-absolute fixed-top" expand="lg">
         <Container>
@@ -40,15 +40,15 @@ class AppNav extends React.Component {
           </button>
           <Collapse isOpen={this.state.collapseOpen} navbar>
             <Nav navbar className="ml-auto">
-              {authenticated ? (
+              {isAuthenticated ? (
                 <React.Fragment>
                   <NavItem>
-                    <NavLink to="/app" className="nav-link">
-                      <i className="tim-icons icon-spaceship" /> Go to App
+                    <NavLink to="/portfolio" className="nav-link">
+                      <i className="tim-icons icon-spaceship" /> My Portfolio
                     </NavLink>
                   </NavItem>
                   <NavItem style={{ cursor: "pointer" }}>
-                    <Link className="nav-link">
+                    <Link className="nav-link" onClick={handleSignout}>
                       <i className="fas fa-sign-out-alt" /> Log out
                     </Link>
                   </NavItem>
