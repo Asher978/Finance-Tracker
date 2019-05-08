@@ -9,6 +9,8 @@ const SIGNUP_SUCCESS = "redux/auth/SIGNUP_SUCCESS";
 const SIGNUP_FAIL = "redux/auth/SIGNUP_FAIL";
 
 const LOGOUT = "redux/auth/LOGOUT";
+const LOGOUT_SUCCESS = "redux/auth/LOGOUT_SUCCESS";
+const LOGOUT_FAIL = "redux/auth/LOGOUT_FAIL";
 
 const LOAD = "redux/auth/LOAD";
 const LOAD_SUCCESS = "redux/auth/LOAD_SUCCESS";
@@ -63,6 +65,24 @@ export default function reducer(state = initialState, action = {}) {
         authLoading: false,
         loginError: action.error
       };
+    case LOGOUT:
+      return {
+        ...state,
+        isLoggingout: true
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isLoggingout: false,
+        isAuthenticated: false,
+        user: null
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        isLoggingout: false,
+        logoutError: action.error
+      };
 
     default:
       return state;
@@ -95,23 +115,14 @@ export function login(data) {
             { expires: new Date(response.headers.get("expiry") * 1000) } ||
             undefined;
           setCookie(authHeaders, cookieOptions);
+          console.log("LOGIN RESPONSE", response);
+          return response;
         }
-
-        return response;
       } catch (e) {
         throw e;
       }
     }
   };
-}
-
-// logout
-export function logout() {
-  return dispatch =>
-    dispatch({
-      type: LOGOUT,
-      result: false
-    });
 }
 
 // load user
@@ -125,7 +136,27 @@ export function load() {
   };
 }
 
-// helpers
+// logout user
+export function logOut() {
+  return {
+    types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
+    promise: async client => {
+      try {
+        const response = await client.delete("/auth/sign_out");
+        if (response.status === 200) {
+          setCookie("");
+          return response;
+        }
+      } catch (err) {
+        throw err;
+      }
+    }
+  };
+}
+
+/*
+ * set cookie helper
+ * * * * * * * * * */
 function setCookie(data, options) {
   cookie.set("token", data, options);
 }
