@@ -5,12 +5,21 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { renderRoutes } from "react-router-config";
 import qs from "qs";
-
+// components
+import AppNav from "~/components/AppNav/AppNav";
+// styling
 import "./App.scss";
 
-import AppNav from "~/components/AppNav/AppNav";
+// redux-actions
+import { logOut as logoutAction } from "~/redux/modules/auth";
 
-@connect(state => ({ user: state.auth.user }))
+@connect(
+  state => ({
+    user: state.auth.user,
+    isAuthenticated: state.auth.isAuthenticated
+  }),
+  { logout: logoutAction }
+)
 @withRouter
 class App extends React.Component {
   static propTypes = {
@@ -62,11 +71,19 @@ class App extends React.Component {
     };
   }
 
+  handleSignout = e => {
+    e.preventDefault();
+    this.props.logout();
+  };
+
   render() {
-    const { route } = this.props;
+    const { route, isAuthenticated } = this.props;
     return (
       <React.Fragment>
-        <AppNav />
+        <AppNav
+          isAuthenticated={isAuthenticated}
+          handleSignout={this.handleSignout}
+        />
         <main id="main" className="app">
           {renderRoutes(route.routes)}
         </main>
