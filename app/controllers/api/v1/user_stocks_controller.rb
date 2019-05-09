@@ -8,7 +8,7 @@ module Api
         # in the stocks table
         stock = Stock.find_by_ticker(params[:stock_ticker])
 
-        # if it does nor exist then use the Stock Model
+        # if it does not exist then use the Stock Model
         # method to look up that stock and save to db
         if stock.blank?
           stock = Stock.new_from_lookup(params[:stock_ticker])

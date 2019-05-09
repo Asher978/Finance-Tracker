@@ -10,7 +10,8 @@ import {
   InputGroup,
   Row,
   Col,
-  Card
+  Card,
+  Badge
 } from "reactstrap";
 import "./MyPortfolio.scss";
 
@@ -35,9 +36,13 @@ class MyPortfolio extends React.Component {
     lookUpStock: PropTypes.func.isRequired,
     addToPortfolio: PropTypes.func.isRequired,
     stock: PropTypes.shape({
-      last_price: PropTypes.string,
-      name: PropTypes.string,
-      ticker: PropTypes.string
+      canAddStock: PropTypes.bool,
+      userIsTracking: PropTypes.bool,
+      stock: PropTypes.shape({
+        last_price: PropTypes.string,
+        name: PropTypes.string,
+        ticker: PropTypes.string
+      })
     }),
     stockLoookupError: PropTypes.string
   };
@@ -92,23 +97,51 @@ class MyPortfolio extends React.Component {
                 )}
                 {stock && (
                   <div className="search__result__wrapper">
+                    <div className="badge__container">
+                      <Badge color="primary">Stock Limits:</Badge>
+                      {stock.canAddStock ? (
+                        <span className="status__message ml-1">
+                          You are under your limit and can add more stocks.
+                        </span>
+                      ) : (
+                        <span className="status__message ml-1">
+                          You've reached your limit and can not add more stocks.
+                        </span>
+                      )}
+                    </div>
+                    <div className="badge__container">
+                      <Badge color="primary">Tracking status:</Badge>
+                      {stock.userIsTracking ? (
+                        <span className="status__message ml-1">
+                          You are already tracking this stock and it can not be
+                          added to your portfolio.
+                        </span>
+                      ) : (
+                        <span className="status__message ml-1">
+                          This stock is nt being tracked by you. It can be added
+                          to your portfolio.
+                        </span>
+                      )}
+                    </div>
                     <Card className="search__card">
                       <div className="search__result">
                         <span className="stock__name">
                           <strong>Name: </strong>
-                          {stock.name}
+                          {stock.stock.name}
                         </span>
                         <span className="stock__ticker">
                           <strong>Symbol: </strong>
-                          {stock.ticker}
+                          {stock.stock.ticker}
                         </span>
                         <span className="stock__last__price">
-                          <strong>Last Price: </strong>${stock.last_price}
+                          <strong>Last Price: </strong>${stock.stock.last_price}
                         </span>
                       </div>
                     </Card>
                     <Button
+                      id="add-stock"
                       className="mt-4 btn-outline mr-auto ml-auto"
+                      disabled={!stock.canAddStock || stock.userIsTracking}
                       onClick={this.handleAddToPortfolio}>
                       Add to portfolio
                     </Button>
