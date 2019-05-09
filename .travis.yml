@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - "10"
+  - "8"
+
+
+language: ruby
+rvm:
+ - 2.2
+ - jruby
