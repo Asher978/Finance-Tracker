@@ -23,7 +23,13 @@ module Api
           return render json: { error: "You have entered an incorrect symbol!" } unless @stock
         end
 
-        render json: @stock
+        # is user tracking this stock already?
+        stock_tracking_status = current_user.stock_already_added?(@stock.ticker)
+
+        # can user add more stocks? get limits
+        can_add_stocks = current_user.under_stock_limit?
+
+        render json: { stock: @stock, userIsTracking: stock_tracking_status, canAddStock: can_add_stocks }
       end
     end
   end
