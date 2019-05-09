@@ -29,6 +29,7 @@ module Api
         # can user add more stocks? get limits
         can_add_stocks = current_user.under_stock_limit?
 
+        # searched stock response with user stock limits and association info
         render json: { stock: @stock, userIsTracking: stock_tracking_status, canAddStock: can_add_stocks }
       end
     end
