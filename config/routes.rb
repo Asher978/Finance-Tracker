@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resources :stocks
+      resources :user_stocks, only: [:create]
+      post 'search_stocks', to: 'stocks#search'
     end
   end
 end
