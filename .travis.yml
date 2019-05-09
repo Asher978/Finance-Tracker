@@ -9,3 +9,12 @@ language: ruby
 rvm:
  - 2.4.1
  - jruby
+
+
+before_install:
+  - npm i -g npm@version-number
+
+ cache:
+  npm: true
+  directories:
+    - node_modules
