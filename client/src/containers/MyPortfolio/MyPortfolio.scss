@@ -26,7 +26,7 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 
 .search__result {
@@ -54,6 +54,22 @@
       border-color: transparent;
       color: #fff;
     }
+  }
+  button[disabled] {
+    &:hover {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+  }
+}
+.badge__container {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+
+  .status__message {
+    font-size: 13px;
   }
 }
 
