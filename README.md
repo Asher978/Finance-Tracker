@@ -1,5 +1,7 @@
 # Finance Stock Tracker
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Asher978/Finance-Tracker.svg)](https://greenkeeper.io/)
+
 ### Database
 
     * postgresql
