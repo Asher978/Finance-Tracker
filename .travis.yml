@@ -9,9 +9,16 @@ rbenv:
  - 1.1.1
  - jruby
 
+ before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database stock-tracker_test;' -U postgres
+
 
 before_install:
   - npm i -g npm@version-number
+
+script:
+  - bundle exec rails db:migrate RAILS_ENV=test
 
  cache:
   npm: true
