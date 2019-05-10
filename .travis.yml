@@ -11,7 +11,7 @@ rbenv:
 
 before_script:
  - cp config/database.yml.travis config/database.yml
- - psql -c 'create database stock-tracker_test;' -U postgres
+ - psql -c 'create database stock_tracker_test;' -U postgres
 
 script:
   - bundle exec rails db:migrate RAILS_ENV=test
