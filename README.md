@@ -2,6 +2,8 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Asher978/Finance-Tracker.svg)](https://greenkeeper.io/)
 
+![Dependencies badge](https://david-dm.org/Asher978/Finance-Tracker.svg)
+
 ### Database
 
     * postgresql
