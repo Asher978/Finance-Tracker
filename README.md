@@ -1,7 +1,7 @@
 # Finance Stock Tracker
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Asher978/Finance-Tracker.svg)](https://greenkeeper.io/)
-[![Dependency Status](https://david-dm.org/Asher978/Finance-Tracker.svg?style=flat-square)](https://david-dm.org/Asher978/Finance-Tracker.svg)
+[![Dependency Status](https://david-dm.org/Asher978/Finance-Tracker.svg?style=flat-square)](https://david-dm.org/Asher978/Finance-Tracker?path=client)
 
 ### Database
 
