@@ -97,6 +97,6 @@
     "redux-auth-wrapper": "^2.1.0",
     "redux-form": "^8.2.0",
     "redux-thunk": "^2.3.0",
-    "tar": "^4.4.8"
+    "tar": "^5.0.2"
   }
 }
