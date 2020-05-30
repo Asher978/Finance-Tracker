@@ -39,7 +39,7 @@
     "@babel/plugin-syntax-import-meta": "^7.10.1",
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-react": "^7.10.1",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-root-import": "^6.1.0",
